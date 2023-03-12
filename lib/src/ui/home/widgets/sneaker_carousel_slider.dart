@@ -35,34 +35,18 @@ class _SneakerCarouselSliderState extends State<SneakerCarouselSlider> {
             (sneaker) =>
                 BlocBuilder<SneakerCarouselCubit, SneakerCarouselState>(
               builder: (context, state) {
-                if (state is SneakerCarouselChangedState) {
-                  return SneakerCard(
-                    sneaker: state.sneaker,
-                  );
-                }
+                // if (state is SneakerCarouselChangedState) {
                 return SneakerCard(
-                  sneaker: sneakers[0],
+                  sneaker: state.sneaker,
                 );
+                // }
+                // return SneakerCard(
+                //   sneaker: sneakers[0],
+                // );
               },
             ),
           )
           .toList(),
-
-      //  List.generate(
-      //   sneakers.length,
-      //   (index) => BlocBuilder<SneakerCarouselCubit, SneakerCarouselState>(
-      //     builder: (context, state) {
-      //       if (state is SneakerCarouselChangedState) {
-      //         return SneakerCard(
-      //           sneaker: state.sneaker,
-      //         );
-      //       }
-      //       return SneakerCard(
-      //         sneaker: sneakers[0],
-      //       );
-      //     },
-      //   ),
-      // ),
     );
   }
 }

@@ -7,7 +7,7 @@ part 'sneaker_carousel_state.dart';
 class SneakerCarouselCubit extends Cubit<SneakerCarouselState> {
   SneakerCarouselCubit()
       : super(
-          const SneakerCarouselInitialState(),
+          SneakerCarouselState(sneaker: sneakers.first),
         );
 
   void onSneakerCarouselChanged({
@@ -15,7 +15,8 @@ class SneakerCarouselCubit extends Cubit<SneakerCarouselState> {
     required SneakerModel sneaker,
   }) {
     emit(
-      SneakerCarouselChangedState(index: index, sneaker: sneaker),
+      state.copyWith(sneaker: sneaker),
+      // SneakerCarouselChangedState(index: index, sneaker: sneaker),
     );
   }
 }
