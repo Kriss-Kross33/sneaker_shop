@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sneaker_shop/src/blocs/blocs.dart';
-import 'package:sneaker_shop/src/models/models.dart';
 import 'package:sneaker_shop/src/ui/home/widgets/widgets.dart';
 
 import '../../utils/utils.dart';
@@ -15,7 +14,7 @@ class HomeScreen extends StatelessWidget {
       body: Stack(
         children: [
           Positioned(
-            top: 60,
+            top: 20,
             left: 15,
             right: 20,
             child: Column(
@@ -49,19 +48,8 @@ class HomeScreen extends StatelessWidget {
                 ),
                 BlocBuilder<SneakerCarouselCubit, SneakerCarouselState>(
                   builder: (context, state) {
-                    if (state is SneakerCarouselChangedState) {
-                      return Text(
-                        'Basketball',
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              color: state.sneaker.color,
-                            ),
-                      );
-                    }
-                    return Text(
-                      'Basketball',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: sneakers.first.color,
-                          ),
+                    return SneakerTabView(
+                      selectedColor: state.sneaker.color,
                     );
                   },
                 ),
@@ -71,6 +59,10 @@ class HomeScreen extends StatelessWidget {
                 const SneakerCarouselSlider(),
               ],
             ),
+          ),
+          const Positioned(
+            bottom: 0.0,
+            child: BottomNav(),
           ),
         ],
       ),
