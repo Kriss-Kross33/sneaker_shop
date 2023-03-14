@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
       body: Stack(
         children: [
           Positioned(
-            top: 20,
+            top: 40,
             left: 15,
             right: 20,
             child: Column(
