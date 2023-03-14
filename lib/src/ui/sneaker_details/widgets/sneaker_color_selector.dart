@@ -20,8 +20,7 @@ class _SneakerColorSelectorState extends State<SneakerColorSelector> {
     return BlocBuilder<SneakerColorSelectorCubit, SneakerColorSelectorState>(
       builder: (context, state) {
         //print(state.selectedColor);
-        print(
-            state.selectedColor == null || state.selectedColor != widget.color);
+
         return Padding(
           padding: const EdgeInsets.only(right: 20),
           child: GestureDetector(

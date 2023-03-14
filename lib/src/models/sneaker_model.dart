@@ -56,7 +56,7 @@ List<SneakerModel> sneakers = [
   const SneakerModel(
     manufacturer: 'Nike',
     brandName: 'Nike Air',
-    model: 'Air Jordan 2 Mid SE GC',
+    model: 'Air Jordan 1 Mid SE GC',
     imagePath: AssetConsts.nikeAirJordanCyan,
     price: 500.00,
     description: '',
@@ -65,7 +65,7 @@ List<SneakerModel> sneakers = [
   const SneakerModel(
     manufacturer: 'Nike',
     brandName: 'Nike Air',
-    model: 'Air Jordan 3 Mid SE GC',
+    model: 'Air Jordan 1 Mid SE GC',
     imagePath: AssetConsts.nikeAirJordanGreen,
     price: 500.00,
     description: '',
@@ -74,7 +74,7 @@ List<SneakerModel> sneakers = [
   const SneakerModel(
     manufacturer: 'Nike',
     brandName: 'Nike Air',
-    model: 'Air Jordan 4 Mid SE GC',
+    model: 'Air Jordan 1 Mid SE GC',
     imagePath: AssetConsts.nikeAirJordanRed,
     price: 500.00,
     description: '',

@@ -17,36 +17,41 @@ class _SneakerCarouselSliderState extends State<SneakerCarouselSlider> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return CarouselSlider(
-      options: CarouselOptions(
-          height: size.height * 0.45,
-          enlargeCenterPage: true,
-          aspectRatio: 2.0,
-          enableInfiniteScroll: false,
-          viewportFraction: 0.75,
-          padEnds: false,
-          onPageChanged: (index, _) {
-            context.read<SneakerCarouselCubit>().onSneakerCarouselChanged(
-                  index: index,
-                  sneaker: sneakers[index],
-                );
-          }),
-      items: sneakers
-          .map(
-            (sneaker) =>
-                BlocBuilder<SneakerCarouselCubit, SneakerCarouselState>(
-              builder: (context, state) {
-                // if (state is SneakerCarouselChangedState) {
-                return SneakerCard(
-                  sneaker: state.sneaker,
-                );
-                // }
-                // return SneakerCard(
-                //   sneaker: sneakers[0],
-                // );
-              },
-            ),
-          )
-          .toList(),
-    );
+        options: CarouselOptions(
+            height: size.height * 0.45,
+            enlargeCenterPage: true,
+            aspectRatio: 2.0,
+            enableInfiniteScroll: false,
+            viewportFraction: 0.75,
+            padEnds: false,
+            onPageChanged: (index, _) {
+              context.read<SneakerCarouselCubit>().onSneakerCarouselChanged(
+                    index: index,
+                    sneaker: sneakers[index],
+                  );
+            }),
+        items: List<SneakerCard>.generate(
+          sneakers.length,
+          (index) => SneakerCard(
+            sneaker: sneakers[index],
+            index: index,
+          ),
+        ).toList()
+
+        // sneakers
+        //     .map(
+        //       (sneaker) =>
+        //           BlocBuilder<SneakerCarouselCubit, SneakerCarouselState>(
+        //         builder: (context, state) {
+        //           // if (state is SneakerCarouselChangedState) {
+        //           return SneakerCard(
+        //             sneaker: sneaker,
+        //           );
+
+        //         },
+        //       ),
+        //     )
+        //     .toList(),
+        );
   }
 }

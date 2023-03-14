@@ -7,9 +7,11 @@ import 'package:sneaker_shop/src/utils/utils.dart';
 
 class SneakerDetailsScreen extends StatelessWidget {
   final SneakerModel sneaker;
+  final int index;
   const SneakerDetailsScreen({
     super.key,
     required this.sneaker,
+    required this.index,
   });
 
   @override
@@ -23,47 +25,24 @@ class SneakerDetailsScreen extends StatelessWidget {
             Positioned(
               right: -size.width * 0.6,
               top: -size.width * 0.3,
-              child: Container(
-                height: size.height * 0.6,
-                width: size.height * 0.6,
-                decoration: BoxDecoration(
-                  color: AppColor.gold,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(
-                      size.height * 0.3,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              top: 30,
-              left: 20,
-              right: 20,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      color: AppColor.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Align(
-                      child: Icon(
-                        Icons.arrow_back_ios,
-                        size: 20,
+              child: TweenAnimationBuilder<double>(
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.ease,
+                  tween: Tween(begin: 0, end: 1),
+                  builder: (context, value, _) {
+                    return Container(
+                      height: value * (size.height * 0.6),
+                      width: value * (size.height * 0.6),
+                      decoration: BoxDecoration(
+                        color: sneaker.color,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(
+                            size.height * 0.3,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  const Icon(
-                    Icons.favorite,
-                    size: 50,
-                    color: AppColor.white,
-                  ),
-                ],
-              ),
+                    );
+                  }),
             ),
             Positioned(
               top: size.height * 0.25,
@@ -89,11 +68,14 @@ class SneakerDetailsScreen extends StatelessWidget {
             Positioned(
               top: 90,
               right: 30,
-              child: Image.asset(
-                sneaker.imagePath,
-                height: size.height * 0.38,
-                width: size.width * 0.84,
-                fit: BoxFit.fill,
+              child: Hero(
+                tag: index,
+                child: Image.asset(
+                  sneaker.imagePath,
+                  height: size.height * 0.38,
+                  width: size.width * 0.84,
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
             Positioned(
@@ -152,7 +134,9 @@ class SneakerDetailsScreen extends StatelessWidget {
                           fontSize: 18,
                         ),
                   ),
-                  const SneakerSizeList(),
+                  SneakerSizeList(
+                    sneaker: sneaker,
+                  ),
                 ],
               ),
             ),
@@ -182,11 +166,49 @@ class SneakerDetailsScreen extends StatelessWidget {
                     width: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: AppColor.gold,
+                      color: sneaker.color,
+                    ),
+                    child: Center(
+                      child: Text(
+                        'BUY',
+                        style:
+                            Theme.of(context).textTheme.displayMedium?.copyWith(
+                                  color: AppColor.black,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                      ),
                     ),
                   ),
                 ],
               ),
+            ),
+            Positioned(
+              top: 40,
+              left: 20,
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                  color: AppColor.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: IconButton(
+                    icon: const Padding(
+                      padding: EdgeInsets.only(left: 5.0),
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        size: 20,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    }),
+              ),
+            ),
+            const Positioned(
+              top: 40,
+              right: 20,
+              child: SneakerFavouriteIcon(),
             ),
           ],
         ),
