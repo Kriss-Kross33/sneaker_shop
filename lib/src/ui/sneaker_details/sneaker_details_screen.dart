@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:simple_shadow/simple_shadow.dart';
 import 'package:sneaker_shop/src/blocs/blocs.dart';
 import 'package:sneaker_shop/src/models/models.dart';
 import 'package:sneaker_shop/src/ui/sneaker_details/widgets/widgets.dart';
@@ -70,11 +71,16 @@ class SneakerDetailsScreen extends StatelessWidget {
               right: 30,
               child: Hero(
                 tag: index,
-                child: Image.asset(
-                  sneaker.imagePath,
-                  height: size.height * 0.38,
-                  width: size.width * 0.84,
-                  fit: BoxFit.fill,
+                child: SimpleShadow(
+                  sigma: 5,
+                  opacity: 0.4,
+                  offset: const Offset(10, 25),
+                  child: Image.asset(
+                    sneaker.imagePath,
+                    height: size.height * 0.38,
+                    width: size.width * 0.84,
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),

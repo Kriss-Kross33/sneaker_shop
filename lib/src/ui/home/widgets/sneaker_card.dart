@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_shadow/simple_shadow.dart';
 import 'package:sneaker_shop/src/ui/sneaker_details/sneaker_details_screen.dart';
 import 'package:sneaker_shop/src/utils/utils.dart';
 
@@ -131,16 +132,20 @@ class _SneakerCardState extends State<SneakerCard> {
               left: 17,
               child: Hero(
                 tag: widget.index,
-                child: Container(
-                  height: 235,
-                  width: 250,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(
-                          widget.sneaker.imagePath,
-                        ),
-                        fit: BoxFit.fill),
-                  ),
+                child: SimpleShadow(
+                  sigma: 5,
+                  opacity: 0.2,
+                  offset: const Offset(10, 25),
+                  child: Image.asset(widget.sneaker.imagePath,
+                      height: 235, width: 250, fit: BoxFit.fill
+                      // decoration: BoxDecoration(
+                      //   image: DecorationImage(
+                      //       image: AssetImage(
+                      //         widget.sneaker.imagePath,
+                      //       ),
+                      //       fit: BoxFit.fill),
+                      // ),
+                      ),
                 ),
               ),
               // child: Image.asset(
