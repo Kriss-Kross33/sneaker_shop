@@ -6,9 +6,11 @@ import '../../../models/models.dart';
 
 class SneakerCard extends StatefulWidget {
   final SneakerModel sneaker;
+  final int index;
   const SneakerCard({
     super.key,
     required this.sneaker,
+    required this.index,
   });
 
   @override
@@ -27,6 +29,7 @@ class _SneakerCardState extends State<SneakerCard> {
           pageBuilder: (context, animation, _) {
             return SneakerDetailsScreen(
               sneaker: widget.sneaker,
+              index: widget.index,
             );
           },
         ),
@@ -126,15 +129,18 @@ class _SneakerCardState extends State<SneakerCard> {
             Positioned(
               top: 85,
               left: 17,
-              child: Container(
-                height: 235,
-                width: 250,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(
-                        widget.sneaker.imagePath,
-                      ),
-                      fit: BoxFit.fill),
+              child: Hero(
+                tag: widget.index,
+                child: Container(
+                  height: 235,
+                  width: 250,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(
+                          widget.sneaker.imagePath,
+                        ),
+                        fit: BoxFit.fill),
+                  ),
                 ),
               ),
               // child: Image.asset(
