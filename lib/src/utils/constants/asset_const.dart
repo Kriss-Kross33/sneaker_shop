@@ -12,4 +12,15 @@ class AssetConsts {
   // static const String nikeLogoWhite = '$_imagePath/nike_w.png';
   // static const String nikeLogoWhite = '$_imagePath/nike_w.png';
   // static const String nikeLogoWhite = '$_imagePath/nike_w.png';
+
+  static List<String> allAssets() {
+    return <String>[
+      nikeLogoWhite,
+      nikeLogoBlack,
+      nikeAirJordanYellow,
+      nikeAirJordanCyan,
+      nikeAirJordanRed,
+      nikeAirJordanGreen,
+    ];
+  }
 }
