@@ -5,10 +5,19 @@ import 'package:sneaker_shop/src/blocs/blocs.dart';
 import 'package:sneaker_shop/src/ui/home/home_screen.dart';
 import 'package:sneaker_shop/src/utils/utils.dart';
 
+import 'src/ui/sneaker_details/blocs/blocs.dart';
+
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+  final binding = WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
       overlays: [SystemUiOverlay.bottom]);
+
+  binding.addPostFrameCallback((_) async {
+    BuildContext context = binding.renderViewElement!;
+    for (var asset in AssetConsts.allAssets()) {
+      precacheImage(AssetImage(asset), context);
+    }
+  });
   runApp(const MainApp());
 }
 
@@ -17,12 +26,22 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.defaultTheme,
-      home: BlocProvider<SneakerCarouselCubit>(
-        create: (context) => SneakerCarouselCubit(),
-        child: const HomeScreen(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<SneakerCarouselCubit>(
+          create: (context) => SneakerCarouselCubit(),
+        ),
+        BlocProvider<SneakerColorSelectorCubit>(
+          create: (context) => SneakerColorSelectorCubit(),
+        ),
+        BlocProvider<SneakerSizeSelectorCubit>(
+          create: (context) => SneakerSizeSelectorCubit(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.defaultTheme,
+        home: const HomeScreen(),
       ),
     );
   }
