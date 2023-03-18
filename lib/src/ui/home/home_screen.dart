@@ -49,12 +49,12 @@ class HomeScreen extends StatelessWidget {
                 BlocBuilder<SneakerCarouselCubit, SneakerCarouselState>(
                   builder: (context, state) {
                     return SneakerTabView(
-                      selectedColor: state.sneaker.color,
+                      selectedColor: state.sneaker.sneakerColors.first.color,
                     );
                   },
                 ),
                 const SizedBox(
-                  height: 100,
+                  height: 80,
                 ),
                 const SneakerCarouselSlider(),
               ],

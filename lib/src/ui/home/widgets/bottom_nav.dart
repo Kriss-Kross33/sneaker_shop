@@ -16,7 +16,7 @@ class BottomNav extends StatelessWidget {
           height: 100,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-            color: state.sneaker.color,
+            color: state.sneaker.sneakerColors.first.color,
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(42),
               topRight: Radius.circular(42),

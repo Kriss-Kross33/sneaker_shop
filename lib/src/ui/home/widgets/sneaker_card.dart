@@ -113,7 +113,7 @@ class _SneakerCardState extends State<SneakerCard> {
                 height: 65,
                 width: 80,
                 decoration: BoxDecoration(
-                  color: widget.sneaker.color,
+                  color: widget.sneaker.sneakerColors.first.color,
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(30.0),
                     bottomRight: Radius.circular(30.0),
@@ -136,8 +136,11 @@ class _SneakerCardState extends State<SneakerCard> {
                   sigma: 5,
                   opacity: 0.2,
                   offset: const Offset(10, 25),
-                  child: Image.asset(widget.sneaker.imagePath,
-                      height: 235, width: 250, fit: BoxFit.fill
+                  child: Image.asset(
+                      widget.sneaker.sneakerColors.first.imagePath,
+                      height: 235,
+                      width: 250,
+                      fit: BoxFit.fill
                       // decoration: BoxDecoration(
                       //   image: DecorationImage(
                       //       image: AssetImage(

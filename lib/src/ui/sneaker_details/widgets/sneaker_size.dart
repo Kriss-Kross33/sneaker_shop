@@ -25,23 +25,51 @@ class SneakerSize extends StatelessWidget {
         child: BlocBuilder<SneakerSizeSelectorCubit, SneakerSizeSelectorState>(
             builder: (context, state) {
           if (state.sneakerSize == size) {
-            return Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: color,
-              ),
-              child: Center(
-                child: Text(
-                  '${size.removeTrailingZeros()}',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: AppColor.black,
-                        fontSize: 24,
+            return BlocBuilder<SneakerColorSelectorCubit,
+                SneakerColorSelectorState>(
+              builder: (context, state) {
+                if (state.selectedColor != null) {
+                  return AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: state.selectedColor,
+                    ),
+                    child: Center(
+                      child: Text(
+                        '${size.removeTrailingZeros()}',
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColor.black,
+                                  fontSize: 24,
+                                ),
                       ),
-                ),
-              ),
+                    ),
+                  );
+                }
+                return AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: color,
+                  ),
+                  child: Center(
+                    child: Text(
+                      '${size.removeTrailingZeros()}',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: AppColor.black,
+                            fontSize: 24,
+                          ),
+                    ),
+                  ),
+                );
+              },
             );
           }
           return Container(

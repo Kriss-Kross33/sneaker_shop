@@ -10,8 +10,7 @@ class SneakerModel extends Equatable {
   /// Brand name of sneaker
   final String brandName;
 
-  /// Sneaker's image path
-  final String imagePath;
+  final List<SneakerColor> sneakerColors;
 
   /// Price of sneaker
   final double price;
@@ -22,24 +21,34 @@ class SneakerModel extends Equatable {
   // Short description about the sneaker
   final String description;
 
-  final Color color;
-
   const SneakerModel({
     required this.manufacturer,
     required this.brandName,
     required this.model,
-    required this.imagePath,
     required this.price,
     required this.description,
-    required this.color,
+    required this.sneakerColors,
   });
 
   @override
   List<Object> get props => [
         manufacturer,
         brandName,
-        imagePath,
+        sneakerColors,
         price,
+      ];
+}
+
+class SneakerColor extends Equatable {
+  final Color color;
+  final String imagePath;
+
+  const SneakerColor({required this.color, required this.imagePath});
+
+  @override
+  List<Object?> get props => [
+        color,
+        imagePath,
       ];
 }
 
@@ -48,36 +57,82 @@ List<SneakerModel> sneakers = [
     manufacturer: 'Nike',
     brandName: 'Nike Air',
     model: 'Air Jordan 1 Mid SE GC',
-    imagePath: AssetConsts.nikeAirJordanYellow,
+    sneakerColors: <SneakerColor>[
+      SneakerColor(
+        color: AppColor.gold,
+        imagePath: AssetConsts.nikeAirJordanYellow,
+      ),
+      SneakerColor(
+        color: AppColor.cyan,
+        imagePath: AssetConsts.nikeAirJordanCyan,
+      ),
+      SneakerColor(
+        color: AppColor.red,
+        imagePath: AssetConsts.nikeAirJordanRed,
+      ),
+      SneakerColor(
+        color: AppColor.green,
+        imagePath: AssetConsts.nikeAirJordanGreen,
+      ),
+    ],
     price: 500.00,
     description: '',
-    color: AppColor.gold,
   ),
-  const SneakerModel(
-    manufacturer: 'Nike',
-    brandName: 'Nike Air',
-    model: 'Air Jordan 1 Mid SE GC',
-    imagePath: AssetConsts.nikeAirJordanCyan,
-    price: 500.00,
-    description: '',
-    color: AppColor.cyan,
-  ),
-  const SneakerModel(
-    manufacturer: 'Nike',
-    brandName: 'Nike Air',
-    model: 'Air Jordan 1 Mid SE GC',
-    imagePath: AssetConsts.nikeAirJordanGreen,
-    price: 500.00,
-    description: '',
-    color: AppColor.green,
-  ),
-  const SneakerModel(
-    manufacturer: 'Nike',
-    brandName: 'Nike Air',
-    model: 'Air Jordan 1 Mid SE GC',
-    imagePath: AssetConsts.nikeAirJordanRed,
-    price: 500.00,
-    description: '',
-    color: AppColor.red,
-  ),
+  // const SneakerModel(
+  //   manufacturer: 'Nike',
+  //   brandName: 'Nike Air',
+  //   model: 'Air Jordan 1 Mid SE GC',
+  //   images: <String>[
+  //     AssetConsts.nikeAirJordanCyan,
+  //     AssetConsts.nikeAirJordanYellow,
+  //     AssetConsts.nikeAirJordanRed,
+  //     AssetConsts.nikeAirJordanGreen,
+  //   ],
+  //   price: 500.00,
+  //   description: '',
+  //   colors: <Color>[
+  //     AppColor.gold,
+  //     AppColor.cyan,
+  //     AppColor.green,
+  //     AppColor.red,
+  //   ],
+  // ),
+  // const SneakerModel(
+  //   manufacturer: 'Nike',
+  //   brandName: 'Nike Air',
+  //   model: 'Air Jordan 1 Mid SE GC',
+  //   images: <String>[
+  //     AssetConsts.nikeAirJordanGreen,
+  //     AssetConsts.nikeAirJordanCyan,
+  //     AssetConsts.nikeAirJordanYellow,
+  //     AssetConsts.nikeAirJordanRed,
+  //   ],
+  //   price: 500.00,
+  //   description: '',
+  //   colors: <Color>[
+  //     AppColor.gold,
+  //     AppColor.cyan,
+  //     AppColor.green,
+  //     AppColor.red,
+  //   ],
+  // ),
+  // const SneakerModel(
+  //   manufacturer: 'Nike',
+  //   brandName: 'Nike Air',
+  //   model: 'Air Jordan 1 Mid SE GC',
+  //   images: <String>[
+  //     AssetConsts.nikeAirJordanRed,
+  //     AssetConsts.nikeAirJordanGreen,
+  //     AssetConsts.nikeAirJordanCyan,
+  //     AssetConsts.nikeAirJordanYellow,
+  //   ],
+  //   price: 500.00,
+  //   description: '',
+  //   colors: <Color>[
+  //     AppColor.gold,
+  //     AppColor.cyan,
+  //     AppColor.green,
+  //     AppColor.red,
+  //   ],
+  // ),
 ];

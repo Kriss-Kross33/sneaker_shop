@@ -26,7 +26,7 @@ class _SneakerSizeListState extends State<SneakerSizeList> {
           itemBuilder: (context, index) {
             return SneakerSize(
               size: sneakerSizes[index],
-              color: widget.sneaker.color,
+              color: widget.sneaker.sneakerColors.first.color,
             );
           },
           itemCount: sneakerSizes.length,
