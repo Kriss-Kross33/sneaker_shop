@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sneaker_shop/src/models/models.dart';
-import 'package:sneaker_shop/src/ui/sneaker_details/blocs/blocs.dart';
 import 'package:sneaker_shop/src/ui/sneaker_details/widgets/widgets.dart';
 
-class SneakerSizeList extends StatelessWidget {
+class SneakerSizeList extends StatefulWidget {
   final SneakerModel sneaker;
   const SneakerSizeList({
     super.key,
@@ -12,22 +10,28 @@ class SneakerSizeList extends StatelessWidget {
   });
 
   @override
+  State<SneakerSizeList> createState() => _SneakerSizeListState();
+}
+
+class _SneakerSizeListState extends State<SneakerSizeList> {
+  final sneakerSizes = <double>[7, 7.5, 8, 9];
+  @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <double>[7, 7.5, 8, 9]
-          .map(
-            (size) => Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: BlocProvider<SneakerSizeSelectorCubit>(
-                create: (context) => SneakerSizeSelectorCubit(),
-                child: SneakerSize(
-                  size: size,
-                  color: sneaker.color,
-                ),
-              ),
-            ),
-          )
-          .toList(),
+    return Flexible(
+      child: SizedBox(
+        height: 45,
+        width: MediaQuery.of(context).size.width,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return SneakerSize(
+              size: sneakerSizes[index],
+              color: widget.sneaker.color,
+            );
+          },
+          itemCount: sneakerSizes.length,
+        ),
+      ),
     );
   }
 }

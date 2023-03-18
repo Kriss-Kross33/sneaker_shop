@@ -6,6 +6,8 @@ import 'package:sneaker_shop/src/models/models.dart';
 import 'package:sneaker_shop/src/ui/sneaker_details/widgets/widgets.dart';
 import 'package:sneaker_shop/src/utils/utils.dart';
 
+import 'blocs/blocs.dart';
+
 class SneakerDetailsScreen extends StatelessWidget {
   final SneakerModel sneaker;
   final int index;
@@ -19,8 +21,15 @@ class SneakerDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: BlocProvider<SneakerColorSelectorCubit>(
-        create: (context) => SneakerColorSelectorCubit(),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider<SneakerColorSelectorCubit>(
+            create: (context) => SneakerColorSelectorCubit(),
+          ),
+          BlocProvider<SneakerSizeSelectorCubit>(
+            create: (context) => SneakerSizeSelectorCubit(),
+          ),
+        ],
         child: Stack(
           children: [
             Positioned(
@@ -51,18 +60,13 @@ class SneakerDetailsScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
                 ),
-                child: Column(
-                  children: [
-                    Text(
-                      sneaker.brandName.toUpperCase(),
-                      style:
-                          Theme.of(context).textTheme.headlineLarge?.copyWith(
-                                fontWeight: FontWeight.w500,
-                                color: AppColor.white,
-                                fontSize: 120.0,
-                              ),
-                    ),
-                  ],
+                child: Text(
+                  sneaker.brandName.toUpperCase(),
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: AppColor.white,
+                        fontSize: 120.0,
+                      ),
                 ),
               ),
             ),
@@ -89,6 +93,7 @@ class SneakerDetailsScreen extends StatelessWidget {
               left: 30,
               right: 30,
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -151,42 +156,49 @@ class SneakerDetailsScreen extends StatelessWidget {
               left: 30,
               right: 30,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: const [
-                      SneakerColorSelector(
-                        color: AppColor.green,
-                      ),
-                      SneakerColorSelector(
-                        color: AppColor.gold,
-                      ),
-                      SneakerColorSelector(
-                        color: AppColor.cyan,
-                      ),
-                    ],
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  SneakerColorSelector(
+                    color: AppColor.green,
                   ),
-                  Container(
-                    height: 60,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: sneaker.color,
-                    ),
-                    child: Center(
-                      child: Text(
-                        'BUY',
-                        style:
-                            Theme.of(context).textTheme.displayMedium?.copyWith(
-                                  color: AppColor.black,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                      ),
-                    ),
+                  SneakerColorSelector(
+                    color: AppColor.gold,
+                  ),
+                  SneakerColorSelector(
+                    color: AppColor.cyan,
                   ),
                 ],
               ),
+            ),
+            Positioned(
+              bottom: 40,
+              right: 30,
+              child: TweenAnimationBuilder<double>(
+                  tween: Tween(begin: 0, end: 1),
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.ease,
+                  builder: (context, value, _) {
+                    return Container(
+                      height: 60,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: sneaker.color,
+                      ),
+                      child: Center(
+                        child: Text(
+                          'BUY',
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayMedium
+                              ?.copyWith(
+                                color: AppColor.black,
+                                fontWeight: FontWeight.w500,
+                              ),
+                        ),
+                      ),
+                    );
+                  }),
             ),
             Positioned(
               top: 40,

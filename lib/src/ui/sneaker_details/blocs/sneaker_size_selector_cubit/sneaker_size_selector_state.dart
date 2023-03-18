@@ -1,9 +1,7 @@
 part of 'sneaker_size_selector_cubit.dart';
 
 class SneakerSizeSelectorState extends Equatable {
-  const SneakerSizeSelectorState({
-    this.sneakerSize = 0,
-  });
+  const SneakerSizeSelectorState({required this.sneakerSize});
 
   final double sneakerSize;
 
