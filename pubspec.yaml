@@ -13,6 +13,7 @@ dependencies:
   flutter_bloc: ^8.1.2
   equatable: ^2.0.5
   hydrated_bloc: ^9.1.0
+  path_provider: ^2.0.13
   simple_shadow: ^0.3.1
 
 dev_dependencies:
