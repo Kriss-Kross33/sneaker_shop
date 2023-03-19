@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sneaker_shop/src/blocs/blocs.dart';
 import 'package:sneaker_shop/src/models/models.dart';
 import 'package:sneaker_shop/src/ui/sneaker_details/widgets/widgets.dart';
 import 'package:sneaker_shop/src/utils/utils.dart';
-
-import 'blocs/blocs.dart';
 
 class SneakerDetailsScreen extends StatelessWidget {
   final SneakerModel sneaker;

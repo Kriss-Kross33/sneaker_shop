@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simple_shadow/simple_shadow.dart';
+import 'package:sneaker_shop/src/blocs/blocs.dart';
 import 'package:sneaker_shop/src/models/models.dart';
-import 'package:sneaker_shop/src/ui/sneaker_details/blocs/blocs.dart';
 
 class SneakerImage extends StatefulWidget {
   final int index;

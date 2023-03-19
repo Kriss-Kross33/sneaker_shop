@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sneaker_shop/src/ui/sneaker_details/blocs/blocs.dart';
+import 'package:sneaker_shop/src/blocs/blocs.dart';
 
 import '../../../models/models.dart';
 import '../../../utils/utils.dart';

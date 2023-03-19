@@ -5,8 +5,6 @@ import 'package:sneaker_shop/src/blocs/blocs.dart';
 import 'package:sneaker_shop/src/ui/home/home_screen.dart';
 import 'package:sneaker_shop/src/utils/utils.dart';
 
-import 'src/ui/sneaker_details/blocs/blocs.dart';
-
 void main() {
   final binding = WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
