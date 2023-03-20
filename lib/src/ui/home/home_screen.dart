@@ -28,17 +28,21 @@ class HomeScreen extends StatelessWidget {
                       fit: BoxFit.fill,
                     ),
                     const Spacer(),
-                    const Icon(
+                    const ThemeSwitcherIcon(),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Icon(
                       Icons.menu,
-                      color: AppColor.white,
+                      color: Theme.of(context).buttonTheme.colorScheme?.primary,
                       size: 33,
                     ),
                     const SizedBox(
                       width: 20,
                     ),
-                    const Icon(
+                    Icon(
                       Icons.shopping_bag_outlined,
-                      color: AppColor.white,
+                      color: Theme.of(context).buttonTheme.colorScheme?.primary,
                       size: 33,
                     ),
                   ],

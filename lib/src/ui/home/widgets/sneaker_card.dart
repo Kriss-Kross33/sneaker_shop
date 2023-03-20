@@ -39,7 +39,7 @@ class _SneakerCardState extends State<SneakerCard> {
         height: size.height * 0.45,
         width: size.width * 0.6,
         decoration: BoxDecoration(
-          color: AppColor.white,
+          color: Theme.of(context).cardTheme.color,
           borderRadius: BorderRadius.circular(
             40,
           ),
@@ -60,7 +60,6 @@ class _SneakerCardState extends State<SneakerCard> {
                     widget.sneaker.brandName.toUpperCase(),
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w600,
-                          color: AppColor.black,
                         ),
                   ),
                   Text(
@@ -78,7 +77,6 @@ class _SneakerCardState extends State<SneakerCard> {
                     '\$${widget.sneaker.price.toStringAsFixed(2)}',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.w600,
-                          color: AppColor.black,
                           fontSize: 20,
                         ),
                   ),

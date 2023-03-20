@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sneaker_shop/src/utils/utils.dart';
 
 class SneakerTabView extends StatelessWidget {
   final Color selectedColor;
@@ -46,7 +45,6 @@ class SneakerTabView extends StatelessWidget {
                 child: Text(
                   'Running',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        color: AppColor.white,
                         fontSize: 24,
                       ),
                 ),
@@ -55,7 +53,6 @@ class SneakerTabView extends StatelessWidget {
                 child: Text(
                   'Training',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        color: AppColor.white,
                         fontSize: 24,
                       ),
                 ),

@@ -27,12 +27,40 @@ class AppTheme {
       onSecondary: AppColor.white,
     ),
     scaffoldBackgroundColor: AppColor.white,
-    buttonTheme: _buttonThemeData,
+    buttonTheme: _lightButtonThemeData,
     textTheme: _lightTextTheme,
+    iconButtonTheme: _lightIconTheme,
+    cardTheme: _lightCardTheme,
   );
 
   /// Button theme data
-  static final ButtonThemeData _buttonThemeData = ButtonThemeData(
+  static final ButtonThemeData _darkButtonThemeData = ButtonThemeData(
+    colorScheme: const ColorScheme.light(
+      primary: AppColor.white,
+    ),
+    disabledColor: Colors.grey.shade300,
+  );
+
+  static const CardTheme _darkCardTheme = CardTheme(
+    color: AppColor.white,
+  );
+
+  static const CardTheme _lightCardTheme = CardTheme(
+    color: AppColor.black,
+  );
+
+  static final IconButtonThemeData _darkIconTheme = IconButtonThemeData(
+      style: IconButton.styleFrom(
+    backgroundColor: AppColor.white,
+  ));
+
+  static final IconButtonThemeData _lightIconTheme = IconButtonThemeData(
+      style: IconButton.styleFrom(
+    backgroundColor: AppColor.white,
+  ));
+
+  /// Button theme data
+  static final ButtonThemeData _lightButtonThemeData = ButtonThemeData(
     colorScheme: const ColorScheme.light(
       primary: AppColor.black,
     ),
@@ -151,14 +179,17 @@ class AppTheme {
     fontFamily: fontFamily,
     appBarTheme: const AppBarTheme(elevation: 0),
     colorScheme: const ColorScheme.light(
-      primary: AppColor.black,
+      primary: AppColor.white,
+      onPrimary: AppColor.white,
       primaryContainer: AppColor.white,
-      secondary: AppColor.black,
+      secondary: AppColor.white,
       onSecondary: AppColor.black,
     ),
     scaffoldBackgroundColor: AppColor.black,
-    buttonTheme: _buttonThemeData,
+    buttonTheme: _darkButtonThemeData,
+    iconButtonTheme: _darkIconTheme,
     textTheme: _darkTextTheme,
+    cardTheme: _darkCardTheme,
   );
 
   /// Light text theme
