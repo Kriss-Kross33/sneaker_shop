@@ -37,6 +37,42 @@ class SneakerModel extends Equatable {
         sneakerColors,
         price,
       ];
+
+  factory SneakerModel.fromJson(Map<String, dynamic> json) {
+    List<SneakerColor> sneakerColors = <SneakerColor>[];
+    if (json['telcos'] != null) {
+      List<dynamic> sneakerColorData = json['sneakerColors'];
+      for (var sneakerColor in sneakerColorData) {
+        sneakerColors.add(SneakerColor.fromJson(sneakerColor));
+      }
+      // parsedJson['telcos'].forEach((v) {
+      //   _telcos.add(TelcoModel.fromJson(v));
+      // });
+    }
+    return SneakerModel(
+      manufacturer: json['manufacturer'],
+      brandName: json['brandName'],
+      model: json['model'],
+      description: json['description'],
+      sneakerColors: sneakerColors,
+      price: json['price'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> data = {};
+    data['manufacturer'] = manufacturer;
+    data['brandName'] = brandName;
+    data['model'] = model;
+    data['price'] = price;
+    data['description'] = description;
+    data['sneakerColors'] = sneakerColors
+        .map(
+          (sneakerColor) => sneakerColor.toJson(),
+        )
+        .toList();
+    return data;
+  }
 }
 
 class SneakerColor extends Equatable {
@@ -44,6 +80,21 @@ class SneakerColor extends Equatable {
   final String imagePath;
 
   const SneakerColor({required this.color, required this.imagePath});
+
+  factory SneakerColor.fromJson(Map<String, dynamic> json) {
+    return SneakerColor(
+      color: Color(json['color']),
+      imagePath: json['imagePath'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> data = {};
+    data['color'] = color.toHex();
+    data['imagePath'] = imagePath;
+
+    return data;
+  }
 
   @override
   List<Object?> get props => [
@@ -73,6 +124,31 @@ List<SneakerModel> sneakers = [
       SneakerColor(
         color: AppColor.green,
         imagePath: AssetConsts.nikeAirJordanGreen,
+      ),
+    ],
+    price: 500.00,
+    description: '',
+  ),
+  const SneakerModel(
+    manufacturer: 'Nike',
+    brandName: 'Nike Zoom',
+    model: 'nike air zoom structure 22',
+    sneakerColors: <SneakerColor>[
+      SneakerColor(
+        color: AppColor.darkGreen,
+        imagePath: AssetConsts.nikeZoomDeepGreen,
+      ),
+      SneakerColor(
+        color: AppColor.violet,
+        imagePath: AssetConsts.nikeZoomViolet,
+      ),
+      SneakerColor(
+        color: AppColor.charcoalBlack,
+        imagePath: AssetConsts.nikeZoomBlack,
+      ),
+      SneakerColor(
+        color: AppColor.lemonGreen,
+        imagePath: AssetConsts.nikeZoomLemonGreen,
       ),
     ],
     price: 500.00,
