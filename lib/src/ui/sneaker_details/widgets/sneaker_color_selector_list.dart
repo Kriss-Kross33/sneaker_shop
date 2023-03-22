@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sneaker_shop/src/models/models.dart';
 import 'package:sneaker_shop/src/ui/sneaker_details/widgets/widgets.dart';
 
-import '../../../utils/utils.dart';
-
 class SneakerColorSelectorList extends StatefulWidget {
   final Size size;
   final SneakerModel sneaker;
@@ -20,12 +18,21 @@ class SneakerColorSelectorList extends StatefulWidget {
 }
 
 class _SneakerColorSelectorListState extends State<SneakerColorSelectorList> {
-  List<Color> sneakerColors = <Color>[
-    AppColor.green,
-    AppColor.gold,
-    AppColor.cyan,
-    AppColor.red,
-  ];
+  List<Color> sneakerColors = <Color>[];
+
+  @override
+  void initState() {
+    getSneakerColors();
+    super.initState();
+  }
+
+  void getSneakerColors() {
+    final colors = widget.sneaker.sneakerColors
+        .map((sneakerColor) => sneakerColor.color)
+        .toList();
+    sneakerColors.addAll(colors);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
