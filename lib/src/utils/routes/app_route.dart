@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sneaker_shop/src/models/models.dart';
 import 'package:sneaker_shop/src/ui/ui.dart';
 import 'package:sneaker_shop/src/utils/utils.dart';
 
@@ -25,10 +26,16 @@ class AppRouter {
       routes: [
         //* sneaker details
         GoRoute(
-          path: RouteConst.sneakerDetailsRoute,
+          path: 'details/:index',
+          name: RouteConst.sneakerDetailsRoute,
           pageBuilder: (context, state) {
-            return const MaterialPage(
-              child: HomeScreen(),
+            SneakerModel sneaker = state.extra as SneakerModel;
+
+            return MaterialPage(
+              child: SneakerDetailsScreen(
+                sneaker: sneaker,
+                index: int.parse(state.params['index']!),
+              ),
             );
           },
         ),
