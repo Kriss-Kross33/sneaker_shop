@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:simple_shadow/simple_shadow.dart';
-import 'package:sneaker_shop/src/ui/sneaker_details/sneaker_details_screen.dart';
 import 'package:sneaker_shop/src/utils/utils.dart';
 
 import '../../../models/models.dart';
@@ -24,16 +24,10 @@ class _SneakerCardState extends State<SneakerCard> {
     final size = MediaQuery.of(context).size;
     var brandName = widget.sneaker.brandName.toUpperCase();
     return GestureDetector(
-      onTap: () => Navigator.push(
-        context,
-        PageRouteBuilder(
-          pageBuilder: (context, animation, _) {
-            return SneakerDetailsScreen(
-              sneaker: widget.sneaker,
-              index: widget.index,
-            );
-          },
-        ),
+      onTap: () => context.pushNamed(
+        RouteConst.sneakerDetailsRoute,
+        params: {'index': widget.index.toString()},
+        extra: widget.sneaker,
       ),
       child: Container(
         height: size.height * 0.45,
