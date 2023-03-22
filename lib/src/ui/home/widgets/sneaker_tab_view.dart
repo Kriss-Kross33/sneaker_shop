@@ -45,6 +45,7 @@ class SneakerTabView extends StatelessWidget {
                 child: Text(
                   'Running',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: Theme.of(context).primaryColor,
                         fontSize: 24,
                       ),
                 ),
@@ -53,6 +54,7 @@ class SneakerTabView extends StatelessWidget {
                 child: Text(
                   'Training',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: Theme.of(context).primaryColor,
                         fontSize: 24,
                       ),
                 ),

@@ -171,7 +171,7 @@ class SneakerDetailsScreen extends StatelessWidget {
                                   .textTheme
                                   .displayMedium
                                   ?.copyWith(
-                                    color: AppColor.black,
+                                    color: Theme.of(context).primaryColor,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
