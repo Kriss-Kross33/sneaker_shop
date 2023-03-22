@@ -10,6 +10,11 @@ class AppColor {
   static const Color grey = Color(0xFFD6D6D7);
   static const Color cyan = Colors.cyan;
   static const Color red = Colors.redAccent;
+  static const Color violet = Color(0xFF19192E);
+  static const Color darkGreen = Color(0xFF484B39);
+  static const Color lemonGreen = Color(0xFF416b4A);
+  static const Color charcoalBlack = Color(0xFF252525);
+
   // static const Color gold = Color(0xFFFEBE00);
   // static const Color gold = Color(0xFFFEBE00);
 }
