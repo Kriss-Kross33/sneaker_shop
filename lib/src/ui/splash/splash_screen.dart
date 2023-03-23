@@ -33,16 +33,19 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: BlocBuilder<SneakerThemeCubit, SneakerThemeState>(
-          builder: (context, state) {
-            if (state.themeMode == SneakerThemeMode.lightMode) {
-              return Image.asset(
-                AssetConsts.nikeLogoDark,
-              );
-            }
+        child: Hero(
+          tag: 'logo',
+          child: BlocBuilder<SneakerThemeCubit, SneakerThemeState>(
+            builder: (context, state) {
+              if (state.themeMode == SneakerThemeMode.lightMode) {
+                return Image.asset(
+                  AssetConsts.nikeLogoDark,
+                );
+              }
 
-            return Image.asset(AssetConsts.nikeLogoLight);
-          },
+              return Image.asset(AssetConsts.nikeLogoLight);
+            },
+          ),
         ),
       ),
     );

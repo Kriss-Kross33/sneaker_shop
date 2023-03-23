@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
       body: Stack(
         children: [
           Positioned(
-            top: 40,
+            top: 50,
             left: 15,
             right: 20,
             child: Column(
@@ -22,10 +22,24 @@ class HomeScreen extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Image.asset(
-                      AssetConsts.nikeLogoWhite,
-                      width: 50,
-                      fit: BoxFit.fill,
+                    Hero(
+                      tag: 'logo',
+                      child: BlocBuilder<SneakerThemeCubit, SneakerThemeState>(
+                        builder: (context, state) {
+                          if (state.themeMode == SneakerThemeMode.lightMode) {
+                            return Image.asset(
+                              AssetConsts.nikeLogoDark,
+                              width: 50,
+                              fit: BoxFit.fill,
+                            );
+                          }
+                          return Image.asset(
+                            AssetConsts.nikeLogoLight,
+                            width: 50,
+                            fit: BoxFit.fill,
+                          );
+                        },
+                      ),
                     ),
                     const Spacer(),
                     const ThemeSwitcherIcon(),
