@@ -1,18 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:sneaker_shop/src/utils/utils.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sneaker_shop/src/blocs/blocs.dart';
 
 class SneakerRating extends StatelessWidget {
-  const SneakerRating({super.key});
+  final Color color;
+  const SneakerRating({super.key, required this.color});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: List<Widget>.generate(
           5,
-          (index) => const Icon(
-                Icons.star,
-                size: 26,
-                color: AppColor.white,
+          (index) =>
+              BlocBuilder<SneakerColorSelectorCubit, SneakerColorSelectorState>(
+                builder: (context, state) {
+                  if (state.selectedColor != null) {
+                    return Icon(
+                      Icons.star,
+                      size: 26,
+                      color: state.selectedColor,
+                    );
+                  }
+                  return Icon(
+                    Icons.star,
+                    size: 26,
+                    color: color,
+                  );
+                },
               )).toList(),
     );
   }
