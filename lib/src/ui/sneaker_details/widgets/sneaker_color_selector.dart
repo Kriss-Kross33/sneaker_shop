@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sneaker_shop/src/blocs/blocs.dart';
 
 import '../../../models/models.dart';
-import '../../../utils/utils.dart';
 
 class SneakerColorSelector extends StatefulWidget {
   final Color color;
@@ -43,9 +42,11 @@ class _SneakerColorSelectorState extends State<SneakerColorSelector> {
                 height: 30,
                 width: 30,
                 decoration: BoxDecoration(
-                  color: AppColor.white,
                   shape: BoxShape.circle,
-                  border: Border.all(width: 6, color: AppColor.white),
+                  border: Border.all(
+                    width: 6,
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
                 ),
                 child: Center(
                   child: Container(
@@ -76,9 +77,11 @@ class _SneakerColorSelectorState extends State<SneakerColorSelector> {
                 height: 30,
                 width: 30,
                 decoration: BoxDecoration(
-                  color: AppColor.white,
                   shape: BoxShape.circle,
-                  border: Border.all(width: 6, color: AppColor.white),
+                  border: Border.all(
+                    width: 6,
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
                 ),
                 child: Center(
                   child: Container(

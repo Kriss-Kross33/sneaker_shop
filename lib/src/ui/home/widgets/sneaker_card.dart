@@ -60,7 +60,7 @@ class _SneakerCardState extends State<SneakerCard> {
                     widget.sneaker.model.toUpperCase(),
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.w600,
-                          color: AppColor.black,
+                          color: Theme.of(context).colorScheme.onSecondary,
                           fontSize: 20,
                         ),
                   ),
@@ -72,6 +72,7 @@ class _SneakerCardState extends State<SneakerCard> {
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.w600,
                           fontSize: 20,
+                          color: Theme.of(context).colorScheme.onSecondary,
                         ),
                   ),
                   const SizedBox(
