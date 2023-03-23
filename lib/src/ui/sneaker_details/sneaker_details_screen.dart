@@ -59,7 +59,7 @@ class SneakerDetailsScreen extends StatelessWidget {
                 sneaker.brandName.toUpperCase(),
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                       fontWeight: FontWeight.w500,
-                      color: AppColor.white,
+                      color: Theme.of(context).primaryColor,
                       fontSize: 120.0,
                     ),
               ),
@@ -86,7 +86,7 @@ class SneakerDetailsScreen extends StatelessWidget {
                   sneaker.brandName.toUpperCase(),
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w400,
-                        color: AppColor.white,
+                        color: Theme.of(context).primaryColor,
                         fontSize: 22,
                       ),
                 ),
@@ -102,7 +102,7 @@ class SneakerDetailsScreen extends StatelessWidget {
                         sneaker.model.toUpperCase(),
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               fontWeight: FontWeight.w500,
-                              color: AppColor.white,
+                              color: Theme.of(context).primaryColor,
                               fontSize: 26,
                             ),
                       ),
@@ -110,14 +110,16 @@ class SneakerDetailsScreen extends StatelessWidget {
                         '\$${sneaker.price.toStringAsFixed(2)}',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               fontWeight: FontWeight.w500,
-                              color: AppColor.white,
+                              color: Theme.of(context).primaryColor,
                               fontSize: 26,
                             ),
                       ),
                     ],
                   ),
                 ),
-                const SneakerRating(),
+                SneakerRating(
+                  color: sneaker.sneakerColors.first.color,
+                ),
                 const SizedBox(
                   height: 50,
                 ),
@@ -125,7 +127,7 @@ class SneakerDetailsScreen extends StatelessWidget {
                   'SET',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w400,
-                        color: AppColor.white,
+                        color: Theme.of(context).primaryColor,
                         fontSize: 18,
                       ),
                 ),
@@ -204,21 +206,25 @@ class SneakerDetailsScreen extends StatelessWidget {
                 }),
           ),
           Positioned(
-            top: 40,
+            top: 50,
             left: 20,
             child: Container(
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                color: AppColor.white,
+                color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: IconButton(
-                  icon: const Padding(
-                    padding: EdgeInsets.only(left: 5.0),
+                  style: IconButton.styleFrom(
+                    backgroundColor: Theme.of(context).primaryColor,
+                  ),
+                  icon: Padding(
+                    padding: const EdgeInsets.only(left: 5.0),
                     child: Icon(
                       Icons.arrow_back_ios,
                       size: 20,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   onPressed: () {

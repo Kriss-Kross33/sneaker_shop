@@ -62,7 +62,7 @@ class SneakerSize extends StatelessWidget {
                       '${size.removeTrailingZeros()}',
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
                             fontWeight: FontWeight.w500,
-                            color: AppColor.black,
+                            color: Theme.of(context).primaryColor,
                             fontSize: 24,
                           ),
                     ),
