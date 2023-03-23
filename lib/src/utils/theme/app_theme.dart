@@ -26,7 +26,7 @@ class AppTheme {
       secondary: AppColor.white,
       onSecondary: AppColor.white,
     ),
-    scaffoldBackgroundColor: AppColor.white,
+    scaffoldBackgroundColor: AppColor.alabaster,
     buttonTheme: _lightButtonThemeData,
     textTheme: _lightTextTheme,
     iconButtonTheme: _lightIconTheme,
@@ -42,7 +42,7 @@ class AppTheme {
   );
 
   static const CardTheme _darkCardTheme = CardTheme(
-    color: AppColor.white,
+    color: AppColor.alabaster,
   );
 
   static const CardTheme _lightCardTheme = CardTheme(

@@ -4,6 +4,7 @@ class AppColor {
   AppColor._();
 
   static const Color white = Color(0xFFFFFFFF);
+  static const Color alabaster = Color(0xFFEDEAE0);
   static const Color black = Color(0xFF1F1F20);
   static const Color gold = Color(0xFFFEBE00);
   static const Color green = Color(0xFF8EC919);
