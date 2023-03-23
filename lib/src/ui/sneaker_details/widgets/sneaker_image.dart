@@ -30,7 +30,7 @@ class _SneakerImageState extends State<SneakerImage>
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(
-        seconds: 2,
+        milliseconds: 300,
       ),
     );
     _animation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
@@ -64,20 +64,53 @@ class _SneakerImageState extends State<SneakerImage>
                   if (sneakerColor.color == state.selectedColor) {
                     return FadeTransition(
                       opacity: _animation,
-                      child: Image.asset(
-                        sneakerColor.imagePath,
-                        height: widget.size.height * 0.38,
-                        width: widget.size.width * 0.84,
-                        fit: BoxFit.fill,
+                      child: BlocBuilder<SneakerSizeSelectorCubit,
+                          SneakerSizeSelectorState>(
+                        builder: (context, state) {
+                          return AnimatedContainer(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeIn,
+                            height: state.sneakerImageSize! *
+                                widget.size.height *
+                                0.38,
+                            width: state.sneakerImageSize! *
+                                widget.size.width *
+                                0.84,
+                            child: Image.asset(
+                              sneakerColor.imagePath,
+                              height: state.sneakerImageSize! *
+                                  widget.size.height *
+                                  0.38,
+                              width: state.sneakerImageSize! *
+                                  widget.size.width *
+                                  0.84,
+                              fit: BoxFit.fill,
+                            ),
+                          );
+                        },
                       ),
                     );
                   }
                 }
-                return Image.asset(
-                  widget.sneaker.sneakerColors.first.imagePath,
-                  height: widget.size.height * 0.38,
-                  width: widget.size.width * 0.84,
-                  fit: BoxFit.fill,
+                return BlocBuilder<SneakerSizeSelectorCubit,
+                    SneakerSizeSelectorState>(
+                  builder: (context, state) {
+                    return AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeIn,
+                      height:
+                          state.sneakerImageSize! * widget.size.height * 0.38,
+                      width: state.sneakerImageSize! * widget.size.width * 0.84,
+                      child: Image.asset(
+                        widget.sneaker.sneakerColors.first.imagePath,
+                        height:
+                            state.sneakerImageSize! * widget.size.height * 0.38,
+                        width:
+                            state.sneakerImageSize! * widget.size.width * 0.84,
+                        fit: BoxFit.fill,
+                      ),
+                    );
+                  },
                 );
               },
             );
