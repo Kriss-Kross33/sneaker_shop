@@ -3,6 +3,7 @@
 
 A sneaker shop ui built with flutter.
 
+Design inspiration: https://www.behance.net/gallery/163209725/NIKE-Shoe-app-UI
 
 ## :iphone: Screens
 
