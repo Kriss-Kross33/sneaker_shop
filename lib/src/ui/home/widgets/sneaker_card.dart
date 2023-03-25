@@ -54,6 +54,7 @@ class _SneakerCardState extends State<SneakerCard> {
                     widget.sneaker.brandName.toUpperCase(),
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w600,
+                          color: Theme.of(context).colorScheme.onSecondary,
                         ),
                   ),
                   Text(
