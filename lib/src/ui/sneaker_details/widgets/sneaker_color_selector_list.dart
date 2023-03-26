@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:sneaker_shop/src/blocs/blocs.dart';
 import 'package:sneaker_shop/src/models/models.dart';
 import 'package:sneaker_shop/src/ui/sneaker_details/widgets/widgets.dart';
 
 class SneakerColorSelectorList extends StatefulWidget {
   final Size size;
   final SneakerModel sneaker;
+  final SneakerColorSelectorCubit sneakerColorSelectorCubit;
 
   const SneakerColorSelectorList({
     super.key,
     required this.size,
     required this.sneaker,
+    required this.sneakerColorSelectorCubit,
   });
 
   @override
@@ -45,6 +48,7 @@ class _SneakerColorSelectorListState extends State<SneakerColorSelectorList> {
           return SneakerColorSelector(
             color: sneakerColors[index],
             sneaker: widget.sneaker,
+            sneakerColorSelectorCubit: widget.sneakerColorSelectorCubit,
           );
         },
       ),

@@ -8,11 +8,13 @@ class SneakerImage extends StatefulWidget {
   final int index;
   final Size size;
   final SneakerModel sneaker;
+  final SneakerColorSelectorCubit sneakerColorSelectorCubit;
   const SneakerImage({
     super.key,
     required this.index,
     required this.size,
     required this.sneaker,
+    required this.sneakerColorSelectorCubit,
   });
 
   @override
@@ -58,6 +60,7 @@ class _SneakerImageState extends State<SneakerImage>
           builder: (context, value, _) {
             return BlocBuilder<SneakerColorSelectorCubit,
                 SneakerColorSelectorState>(
+              bloc: widget.sneakerColorSelectorCubit,
               builder: (context, state) {
                 final sneakerColors = widget.sneaker.sneakerColors;
                 for (var sneakerColor in sneakerColors) {

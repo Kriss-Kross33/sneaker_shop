@@ -16,9 +16,9 @@ class SneakerApp extends StatelessWidget {
         BlocProvider<SneakerCarouselCubit>(
           create: (context) => SneakerCarouselCubit(),
         ),
-        BlocProvider<SneakerColorSelectorCubit>(
-          create: (context) => SneakerColorSelectorCubit(),
-        ),
+        // BlocProvider<SneakerColorSelectorCubit>(
+        //   create: (context) => SneakerColorSelectorCubit(),
+        // ),
         BlocProvider<SneakerSizeSelectorCubit>(
           create: (context) => SneakerSizeSelectorCubit(),
         ),

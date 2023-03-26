@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:sneaker_shop/src/blocs/blocs.dart';
 import 'package:sneaker_shop/src/models/models.dart';
 import 'package:sneaker_shop/src/ui/sneaker_details/widgets/widgets.dart';
 
-class SneakerSizeList extends StatefulWidget {
+class SneakerSizeList extends StatelessWidget {
   final SneakerModel sneaker;
-  const SneakerSizeList({
+  final SneakerColorSelectorCubit sneakerColorSelectorCubit;
+  SneakerSizeList({
     super.key,
     required this.sneaker,
+    required this.sneakerColorSelectorCubit,
   });
 
-  @override
-  State<SneakerSizeList> createState() => _SneakerSizeListState();
-}
-
-class _SneakerSizeListState extends State<SneakerSizeList> {
   final sneakerSizes = <double>[7, 7.5, 8, 9];
+
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -26,7 +25,8 @@ class _SneakerSizeListState extends State<SneakerSizeList> {
           itemBuilder: (context, index) {
             return SneakerSize(
               size: sneakerSizes[index],
-              color: widget.sneaker.sneakerColors.first.color,
+              color: sneaker.sneakerColors.first.color,
+              sneakerColorSelectorCubit: sneakerColorSelectorCubit,
             );
           },
           itemCount: sneakerSizes.length,

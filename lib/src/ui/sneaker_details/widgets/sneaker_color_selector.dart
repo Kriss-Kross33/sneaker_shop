@@ -7,11 +7,13 @@ import '../../../models/models.dart';
 class SneakerColorSelector extends StatefulWidget {
   final Color color;
   final SneakerModel sneaker;
+  final SneakerColorSelectorCubit sneakerColorSelectorCubit;
 
   const SneakerColorSelector({
     super.key,
     required this.color,
     required this.sneaker,
+    required this.sneakerColorSelectorCubit,
   });
 
   @override
@@ -22,6 +24,7 @@ class _SneakerColorSelectorState extends State<SneakerColorSelector> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SneakerColorSelectorCubit, SneakerColorSelectorState>(
+      bloc: widget.sneakerColorSelectorCubit,
       builder: (context, state) {
         //print(state.selectedColor);
 
@@ -31,12 +34,10 @@ class _SneakerColorSelectorState extends State<SneakerColorSelector> {
             padding: const EdgeInsets.only(right: 20),
             child: GestureDetector(
               onTap: () {
-                context
-                    .read<SneakerColorSelectorCubit>()
-                    .onSneakerColorSelected(
-                      color: widget.color,
-                      isSelected: true,
-                    );
+                widget.sneakerColorSelectorCubit.onSneakerColorSelected(
+                  color: widget.color,
+                  isSelected: true,
+                );
               },
               child: Container(
                 height: 30,
@@ -66,12 +67,10 @@ class _SneakerColorSelectorState extends State<SneakerColorSelector> {
             padding: const EdgeInsets.only(right: 15),
             child: GestureDetector(
               onTap: () {
-                context
-                    .read<SneakerColorSelectorCubit>()
-                    .onSneakerColorSelected(
-                      color: widget.color,
-                      isSelected: true,
-                    );
+                widget.sneakerColorSelectorCubit.onSneakerColorSelected(
+                  color: widget.color,
+                  isSelected: true,
+                );
               },
               child: Container(
                 height: 30,
@@ -101,10 +100,10 @@ class _SneakerColorSelectorState extends State<SneakerColorSelector> {
           padding: const EdgeInsets.only(right: 20),
           child: GestureDetector(
             onTap: () {
-              context.read<SneakerColorSelectorCubit>().onSneakerColorSelected(
-                    color: widget.color,
-                    isSelected: true,
-                  );
+              widget.sneakerColorSelectorCubit.onSneakerColorSelected(
+                color: widget.color,
+                isSelected: true,
+              );
             },
             child: Container(
               height: 20,
