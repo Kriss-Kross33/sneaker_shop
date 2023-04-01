@@ -7,7 +7,7 @@ Design inspiration: https://www.behance.net/gallery/163209725/NIKE-Shoe-app-UI
 
 ## Demo
 
-https://user-images.githubusercontent.com/44390350/229267820-395b376a-fab6-4ab4-9cda-1a94a8ac65ce.mp4
+<img src="https://user-images.githubusercontent.com/44390350/229267820-395b376a-fab6-4ab4-9cda-1a94a8ac65ce.mp4" width="200" height="400">
 
 ## :iphone: Screens
 
